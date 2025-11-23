@@ -109,33 +109,312 @@
             transform: scale(1.05);
         }
 
-        /* Responsive Table adjustments */
+        /* Enhanced Navigation Bar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(13, 1, 31, 0.95), rgba(26, 3, 59, 0.95));
+            backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-pink)) 1;
+            box-shadow: 
+                0 4px 25px rgba(255, 71, 166, 0.25),
+                0 8px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 50;
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 
+                0 6px 35px rgba(255, 71, 166, 0.4),
+                0 12px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            background: rgba(20, 247, 255, 0.1);
+            box-shadow: 0 0 15px rgba(20, 247, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: linear-gradient(135deg, rgba(20, 247, 255, 0.1), rgba(20, 247, 255, 0.05));
+            border: 2px solid rgba(20, 247, 255, 0.3);
+            color: var(--neon-cyan);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.6rem;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(20, 247, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, rgba(13, 1, 31, 0.98), rgba(26, 3, 59, 0.98));
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 1rem;
+                border-top: 2px solid rgba(255, 71, 166, 0.5);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+                transform: translateY(-100%);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity: 0;
+                visibility: hidden;
+                z-index: 45;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links li {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 0.75rem;
+                text-align: center;
+                font-size: 1.1rem;
+                background: rgba(255, 255, 255, 0.03);
+                transition: all 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(20, 247, 255, 0.15);
+                border-color: rgba(20, 247, 255, 0.4);
+                transform: translateX(8px);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 45px;
+                height: 45px;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Enhanced Responsive Table */
+        @media (max-width: 1024px) {
+            .run-of-show {
+                font-size: 0.8rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .run-of-show thead { display: none; }
             .run-of-show tbody, .run-of-show tr, .run-of-show td { display: block; width: 100%; }
-            .run-of-show tr { margin-bottom: 1rem; border: 1px solid rgba(255, 71, 166, 0.2); border-radius: 0.5rem; }
-            .run-of-show td { text-align: right; padding-left: 50%; position: relative; }
+            .run-of-show tr { 
+                margin-bottom: 1.5rem; 
+                border: 2px solid rgba(255, 71, 166, 0.3); 
+                border-radius: 1rem; 
+                background: rgba(0, 0, 0, 0.4);
+                padding: 1rem;
+            }
+            .run-of-show td { 
+                text-align: right; 
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                position: relative; 
+            }
             .run-of-show td::before {
                 content: attr(data-label);
                 position: absolute;
                 left: 0;
-                width: 50%;
-                padding-left: 10px;
+                width: 40%;
                 font-weight: bold;
                 text-align: left;
                 color: var(--neon-cyan);
+                text-transform: uppercase;
+                font-size: 0.75rem;
+            }
+            .run-of-show td:last-child {
+                border-bottom: none;
+            }
+        }
+
+        /* Fix heading visibility with navbar */
+        body {
+            padding-top: 100px;
+        }
+
+        /* Enhanced text styling to replace ** formatting */
+        .highlight-text {
+            font-weight: 800;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px var(--glow-cyan);
+        }
+
+        .emphasis-text {
+            font-weight: 700;
+            color: var(--neon-pink);
+            font-size: 1.1em;
+            text-shadow: 0 0 3px var(--glow-pink);
+        }
+
+        .game-title {
+            font-weight: 900;
+            font-size: 1.2em;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .coordinator-note {
+            font-weight: 600;
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            border-left: 3px solid #ffd700;
+        }
+
+        .prize-count {
+            font-weight: 900;
+            font-size: 1.3em;
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--glow-pink);
+        }
+
+        .activity-new {
+            background: linear-gradient(45deg, rgba(20, 247, 255, 0.2), rgba(255, 71, 166, 0.1));
+            border: 1px solid rgba(20, 247, 255, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.6rem;
+            font-weight: 700;
+        }
+
+        /* Enhanced Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding-top: 85px;
+            }
+            
+            .container {
+                padding: 1rem 0.75rem;
+            }
+            
+            .header-title {
+                font-size: 2.5rem !important;
+                margin-top: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .card {
+                padding: 1rem;
+            }
+            
+            .grid {
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
     
-    <!-- Return Home Button (Top Right) -->
-    <a href="templateNew.html" id="home-btn" class="py-2 px-4 rounded-full font-semibold text-sm flex items-center">
-        <i class="fas fa-home mr-2"></i> Return Home
-    </a>
+    <!-- Enhanced Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#dashboard" class="nav-logo">CEEF Host Dashboard</a>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#rampwalk">Ramp Walk</a></li>
+                <li><a href="#prizes">Prizes</a></li>
+                <li><a href="templateNew.html">Return Home</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times" style="display: none;"></i>
+            </button>
+        </div>
+    </nav>
 
-    <div class="container mx-auto p-4 md:p-8">
+    <div class="container mx-auto p-4 md:p-8" id="dashboard">
         
         <!-- HEADER -->
         <header class="text-center mb-12">
@@ -169,7 +448,7 @@
         </section>
 
         <!-- SECTION 1: DETAILED RUN OF SHOW (ROS) -->
-        <section class="mb-16">
+        <section class="mb-16" id="schedule">
             <h3 class="section-title"><i class="fas fa-list-ol mr-2"></i> Detailed Run of Show (ROS) - Sequence Confirmed</h3>
             <div class="overflow-x-auto rounded-lg shadow-2xl">
                 <table class="w-full text-sm run-of-show bg-gray-800/60">
@@ -193,97 +472,98 @@
                         <!-- PERFORMANCES (Diamond Tier for all Performers) -->
                         <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">6:55 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 1: Solo Dance</td><td data-label="Performer/Host">Vishwanath Mane</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Custom EDM Track 'Glow Up'. LIGHTING: Strobes/High-Energy. (Performer Gift)</td></tr>
                         <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:05 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 2: Solo Dance</td><td data-label="Performer/Host">Suraj Mane</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: High-tempo Bollywood. LIGHTING: Red/Gold wash. (Performer Gift)</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:15 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 3: Solo Dance</td><td data-label="Performer/Host">Anuja Pansare</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Contemporary Pop. LIGHTING: Soft Pink/Cyan hues. Handheld mics back with Hosts. (Performer Gift)</td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:15 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 3: Solo Dance</td><td data-label="Performer/Host">Anuja Pansare</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Contemporary Pop. LIGHTING: Soft Pink/Cyan hues. (Performer Gift)</td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:25 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 4: Vocal Act</td><td data-label="Performer/Host">Ritesh Rokade</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MIC: Guitar and Vocal mic check. MUSIC: Acoustic Track. (Performer Gift)</td></tr>
                         
                         <!-- ICEBREAKERS & GAME START -->
-                        <tr class="hover:bg-gray-700/50 bg-indigo-900/40"><td data-label="Time" class="time-col">7:25 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">**Icebreakers / Warm-up Activity**</td><td data-label="Performer/Host">Host: Ritika & Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**New:** Fast-paced "Guess the Movie, Song, Tagline of Brand." Keep audience involved and energized.</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:35 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">Performance 4: Vocal Act</td><td data-label="Performer/Host">Ritesh Rokade</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MIC: Guitar and Vocal mic check. MUSIC: Acoustic Track. Final performance before game block. (Performer Gift)</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-indigo-900/40"><td data-label="Time" class="time-col">7:35 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment"><span class="highlight-text">Icebreakers / Warm-up Activity</span></td><td data-label="Performer/Host">Host: Ritika & Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="activity-new">New:</span> Fast-paced "Guess the Movie, Song, Tagline of Brand." Keep audience involved and energized. Handheld mics back with Hosts.</td></tr>
 
-                        <!-- GAMES BLOCK (7:50 PM - 8:50 PM) -->
-                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">7:50 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">**GAME 1: Chinese Whispers Dance**</td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">SETUP: 3 teams, sealed cards, whiteboard. **No winners (as per new plan).** Link: <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Whispers Demo</a></td></tr>
-                        <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:05 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment">**Intermission 1: Scavenger Hunt**</td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**2 Questions / 2 Winners.** Ask audience to bring random, common objects quickly.</td></tr>
-                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:10 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">**GAME 2: Head, Shoulder, Toe Challenge**</td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**3 Rounds / 3 Winners.** One-on-one knockout style. Prizes are now **Coral** Tier. Link: <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Head/Toe Demo</a></td></tr>
-                        <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:25 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment">**Intermission 2: Scavenger Hunt**</td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**2 Questions / 2 Winners.** Keep segment fast to maintain game momentum.</td></tr>
-                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:30 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">**GAME 3: The Balloon Race (NEW)**</td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**3 Rounds / 3 Winners.** Prizes are now **Coral** Tier. Coordinator must have inflated balloons ready.</td></tr>
-                        <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:45 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment">**Intermission 3: Scavenger Hunt**</td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**2 Questions / 2 Winners.** Final chance for audience participation.</td></tr>
+                        <!-- GAMES BLOCK (7:45 PM - 8:50 PM) -->
+                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">7:45 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 1: Chinese Whispers Dance</span></td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">SETUP: 3 teams, sealed cards, whiteboard. <span class="emphasis-text">No winners (as per new plan).</span> Link: <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Whispers Demo</a></td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:00 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="highlight-text">Intermission 1: Scavenger Hunt</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">2 Questions / 2 Winners.</span> Ask audience to bring random, common objects quickly.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:05 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 2: Head, Shoulder, Toe Challenge</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">3 Rounds / 3 Winners.</span> One-on-one knockout style. Prizes are now <span class="tier-coral">Coral</span> Tier. Link: <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Head/Toe Demo</a></td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:20 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="highlight-text">Intermission 2: Scavenger Hunt</span></td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">2 Questions / 2 Winners.</span> Keep segment fast to maintain game momentum.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:25 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 3: The Balloon Race</span> <span class="activity-new">(NEW)</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">3 Rounds / 3 Winners.</span> Prizes are now <span class="tier-coral">Coral</span> Tier. Coordinator must have inflated balloons ready.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:40 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="highlight-text">Intermission 3: Scavenger Hunt</span></td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">2 Questions / 2 Winners.</span> Final chance for audience participation.</td></tr>
 
                         <!-- CLOSING SEQUENCE (Ramp Walk > Awards > Closing) -->
-                        <tr class="hover:bg-gray-700/50 bg-purple-900/40"><td data-label="Time" class="time-col">8:50 PM</td><td data-label="Duration">20 min</td><td data-label="Activity/Segment">**Activity: CEEF Ramp Walk**</td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">6</td><td data-label="Gift Tier"><span class="tier-platinum">P</span>/<span class="tier-coral">C</span>/<span class="tier-diamond">D</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**6 Winners:** (2 Platinum, 2 Coral, 2 Diamond) See details below for award names. Music: 'Runway Mix'.</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:10 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">Awards Ceremony</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes">**33**</td><td data-label="Gift Tier">All Tiers</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">Presenting all awards. Coordinator C pre-stages awards by tier. **(11 Gold Tiers for Volunteers)**</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:25 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment">Closing Speech & Thank You</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">**Crucial:** Specific shout-out thanking all **Coordinators/Volunteers (Gold Tier)**. Announce dinner. MUSIC: Transition to 'Party Mix'.</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:30 PM</td><td data-label="Duration">-</td><td data-label="Activity/Segment">Dinner / Afterparty</td><td data-label="Performer/Host">DJ/Free Time</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">COORDINATOR TEAMS: Monitor food stations and overall flow. Begin soft cleanup of stage props.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-purple-900/40"><td data-label="Time" class="time-col">8:45 PM</td><td data-label="Duration">20 min</td><td data-label="Activity/Segment"><span class="highlight-text">Activity: CEEF Ramp Walk</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">6</td><td data-label="Gift Tier"><span class="tier-platinum">P</span>/<span class="tier-coral">C</span>/<span class="tier-diamond">D</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="prize-count">6 Winners:</span> (2 Platinum, 2 Coral, 2 Diamond) See details below for award names. Music: 'Runway Mix'.</td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:05 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">Awards Ceremony</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes"><span class="prize-count">33</span></td><td data-label="Gift Tier">All Tiers</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">Presenting all awards. Coordinator C pre-stages awards by tier. <span class="coordinator-note">(11 Gold Tiers for Volunteers)</span></td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:20 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment">Closing Speech & Thank You</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="coordinator-note">Crucial:</span> Specific shout-out thanking all <span class="emphasis-text">Coordinators/Volunteers (Gold Tier)</span>. Announce dinner. MUSIC: Transition to 'Party Mix'.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-emerald-900/40"><td data-label="Time" class="time-col">9:25 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="coordinator-note">Coordinator Cleanup & Transition</span></td><td data-label="Performer/Host">All Coordinators</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="coordinator-note">COORDINATOR TEAMS:</span> Monitor food stations and overall flow. Begin soft cleanup of stage props.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-amber-900/40"><td data-label="Time" class="time-col">9:30 PM</td><td data-label="Duration">60+ min</td><td data-label="Activity/Segment"><span class="emphasis-text" style="font-size: 1.3em; color: #ffd700;">Now We Enjoy Dinner!</span></td><td data-label="Performer/Host">Everyone</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">Team celebration time!</span> Dinner service begins. Background music continues. All team members can now relax and enjoy the evening together.</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
         <!-- SECTION 2: GAME MASTER HANDBOOK -->
-        <section class="mb-16">
+        <section class="mb-16" id="games">
             <h3 class="section-title"><i class="fas fa-puzzle-piece mr-2"></i> Game Master Handbook (Rules & Execution)</h3>
             <div class="space-y-6">
 
                 <!-- Game 1: Chinese Whispers with Dance (FIRST GAME) -->
                 <div class="card">
-                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 1: Chinese Whispers with Dance (7:50 PM)</h4>
+                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 1: Chinese Whispers with Dance (7:45 PM)</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution Refined:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li>**Teams & Setup:** 3 teams, 8-10 players each, lined up facing away from the stage.</li>
-                        <li>**Action:** Host Shivani shows the sealed dance card to the *last* person, who must perform the move *non-verbally* to the person in front.</li>
-                        <li>**Winner Status:** No official winners for this game. Focus on team cooperation and fun!</li>
-                        <li>**Demo Link:** <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Video Demo</a></li>
+                        <li><span class="emphasis-text">Teams & Setup:</span> 3 teams, 8-10 players each, lined up facing away from the stage.</li>
+                        <li><span class="emphasis-text">Action:</span> Host Shivani shows the sealed dance card to the <span class="highlight-text">last</span> person, who must perform the move <span class="highlight-text">non-verbally</span> to the person in front.</li>
+                        <li><span class="emphasis-text">Winner Status:</span> No official winners for this game. Focus on team cooperation and fun!</li>
+                        <li><span class="emphasis-text">Demo Link:</span> <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Video Demo</a></li>
                     </ul>
                 </div>
 
                 <!-- Intermission 1: Scavenger Hunt (2 Winners) -->
                 <div class="card bg-yellow-900/30">
-                    <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 1 (8:05 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
+                    <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 1 (8:00 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li>**Action:** Host calls out common but random objects. **2 Questions / 2 Winners.**</li>
-                        <li>**Winning:** First 2 people to bring the item to the Host win a **Silver** prize.</li>
+                        <li><span class="emphasis-text">Action:</span> Host calls out common but random objects. <span class="emphasis-text">2 Questions / 2 Winners.</span></li>
+                        <li><span class="emphasis-text">Winning:</span> First 2 people to bring the item to the Host win a <span class="tier-silver">Silver</span> prize.</li>
                     </ul>
                 </div>
 
                 <!-- Game 2: Head, Shoulder, Toe Challenge (SECOND GAME) -->
                 <div class="card">
-                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 2: Head, Shoulder, Toe Challenge (8:10 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
+                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 2: Head, Shoulder, Toe Challenge (8:05 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution Refined:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li>**Setup:** Pairs of contestants. Place one water bottle between them.</li>
-                        <li>**Action:** Host calls out body parts. Grab the **"BOTTLE"** when called.</li>
-                        <li>**Winners:** **3 Rounds / 3 Winners** of **Coral** Tier prizes.</li>
-                        <li>**Demo Link:** <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Video Demo</a></li>
+                        <li><span class="emphasis-text">Setup:</span> Pairs of contestants. Place one water bottle between them.</li>
+                        <li><span class="emphasis-text">Action:</span> Host calls out body parts. Grab the <span class="highlight-text">"BOTTLE"</span> when called.</li>
+                        <li><span class="emphasis-text">Winners:</span> <span class="emphasis-text">3 Rounds / 3 Winners</span> of <span class="tier-coral">Coral</span> Tier prizes.</li>
+                        <li><span class="emphasis-text">Demo Link:</span> <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Video Demo</a></li>
                     </ul>
                 </div>
                 
                 <!-- Intermission 2: Scavenger Hunt (2 Winners) -->
                 <div class="card bg-yellow-900/30">
-                    <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 2 (8:25 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
+                    <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 2 (8:20 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li>**Action:** Host asks for 2 more random items. **2 Questions / 2 Winners.**</li>
-                        <li>**Winning:** First 2 audience members to present the item win a **Silver** prize.</li>
+                        <li><span class="emphasis-text">Action:</span> Host asks for 2 more random items. <span class="emphasis-text">2 Questions / 2 Winners.</span></li>
+                        <li><span class="emphasis-text">Winning:</span> First 2 audience members to present the item win a <span class="tier-silver">Silver</span> prize.</li>
                     </ul>
                 </div>
 
                 <!-- Game 3: The Balloon Race (THIRD GAME - NEW) -->
                 <div class="card">
-                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 3: The Balloon Race (8:30 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
+                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 3: The Balloon Race (8:25 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution Refined:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li>**Setup:** 3 race lanes. 5 racers per race. Hold a balloon between feet.</li>
-                        <li>**Action:** Race to the point and back without dropping/touching the balloon with hands.</li>
-                        <li>**Winners:** **3 Rounds / 3 Winners** of **Coral** Tier prizes.</li>
+                        <li><span class="emphasis-text">Setup:</span> 3 race lanes. 5 racers per race. Hold a balloon between feet.</li>
+                        <li><span class="emphasis-text">Action:</span> Race to the point and back without dropping/touching the balloon with hands.</li>
+                        <li><span class="emphasis-text">Winners:</span> <span class="emphasis-text">3 Rounds / 3 Winners</span> of <span class="tier-coral">Coral</span> Tier prizes.</li>
                     </ul>
                 </div>
 
                 <!-- Intermission 3: Scavenger Hunt (2 Winners) -->
                 <div class="card bg-yellow-900/30">
-                    <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 3 (8:45 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
+                    <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 3 (8:40 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li>**Action:** Host asks for the final 2 random items. **2 Questions / 2 Winners.**</li>
-                        <li>**Winning:** First 2 audience members to present the item win a **Silver** prize.</li>
+                        <li><span class="emphasis-text">Action:</span> Host asks for the final 2 random items. <span class="emphasis-text">2 Questions / 2 Winners.</span></li>
+                        <li><span class="emphasis-text">Winning:</span> First 2 audience members to present the item win a <span class="tier-silver">Silver</span> prize.</li>
                     </ul>
                 </div>
 
@@ -291,34 +571,34 @@
         </section>
 
         <!-- SECTION 3: ACTIVITY INSTRUCTIONS (Ramp Walk) (Updated for P/C/D) -->
-        <section class="mb-16">
+        <section class="mb-16" id="rampwalk">
             <h3 class="section-title"><i class="fas fa-crown mr-2"></i> Grand Finale: CEEF Ramp Walk Awards (6 Winners)</h3>
             <div class="space-y-6">
                 
                 <!-- Ramp Walk Awards (CLOSING SEGMENT) -->
                 <div class="card bg-purple-900/40">
-                    <h4 class="text-xl font-bold text-cyan-400 mb-4">CEEF Ramp Walk (8:50 PM - Before Awards)</h4>
+                    <h4 class="text-xl font-bold text-cyan-400 mb-4">CEEF Ramp Walk (8:45 PM - Before Awards)</h4>
                     <p class="font-bold text-pink-400 mb-2 text-lg">6 Winners Breakdown & Award Names:</p>
                     <div class="grid md:grid-cols-3 gap-4">
                         
                         <!-- Platinum Tier (Ramp Top) -->
                         <div class="p-3 bg-gray-900 rounded border border-white/50">
-                            <p class="text-lg font-extrabold tier-platinum">1. The Zenith Diva (Style Queen) - **Platinum**</p>
-                            <p class="text-lg font-extrabold tier-platinum">2. The Zenith Duke (Style King) - **Platinum**</p>
+                            <p class="text-lg font-extrabold tier-platinum">1. The Zenith Diva (Style Queen) - <span class="tier-platinum">Platinum</span></p>
+                            <p class="text-lg font-extrabold tier-platinum">2. The Zenith Duke (Style King) - <span class="tier-platinum">Platinum</span></p>
                             <p class="text-xs text-gray-400 mt-1">Awarded to the overall most stylish, confident, and slaying individual (1 F, 1 M). (2 Prizes Total)</p>
                         </div>
                         
                         <!-- Coral Tier (Best Walk) -->
                         <div class="p-3 bg-gray-900 rounded border border-red-400/50">
-                            <p class="text-lg font-extrabold tier-coral">3. The Runway Virtuosa (Best Walk F) - **Coral**</p>
-                            <p class="text-lg font-extrabold tier-coral">4. The Runway Maestro (Best Walk M) - **Coral**</p>
+                            <p class="text-lg font-extrabold tier-coral">3. The Runway Virtuosa (Best Walk F) - <span class="tier-coral">Coral</span></p>
+                            <p class="text-lg font-extrabold tier-coral">4. The Runway Maestro (Best Walk M) - <span class="tier-coral">Coral</span></p>
                             <p class="text-xs text-gray-400 mt-1">Awarded for the most confident, fluid, and captivating ramp performance (1 F, 1 M). (2 Prizes Total)</p>
                         </div>
                         
                         <!-- Diamond Tier (Best Attire) -->
                         <div class="p-3 bg-gray-900 rounded border border-blue-400/50">
-                            <p class="text-lg font-extrabold tier-diamond">5. The Crest Fashionista (Best Attire F) - **Diamond**</p>
-                            <p class="text-lg font-extrabold tier-diamond">6. The Crest Dapper (Best Attire M) - **Diamond**</p>
+                            <p class="text-lg font-extrabold tier-diamond">5. The Crest Fashionista (Best Attire F) - <span class="tier-diamond">Diamond</span></p>
+                            <p class="text-lg font-extrabold tier-diamond">6. The Crest Dapper (Best Attire M) - <span class="tier-diamond">Diamond</span></p>
                             <p class="text-xs text-gray-400 mt-1">Awarded for the most creative, unique, and well-put-together attire (1 F, 1 M). (2 Prizes Total)</p>
                         </div>
                     </div>
@@ -328,7 +608,7 @@
         </section>
 
         <!-- SECTION 4: FINAL PRIZE DISTRIBUTION SUMMARY (Updated Counts) -->
-        <section class="mb-16">
+        <section class="mb-16" id="prizes">
             <h3 class="section-title"><i class="fas fa-hand-holding-heart mr-2"></i> Final Prize Distribution Summary (Total: 33)</h3>
             <div class="card p-6">
                 <div class="grid md:grid-cols-5 gap-6 text-center">
@@ -385,7 +665,7 @@
                 </div>
                 <div class="p-3 border rounded border-yellow-400/50">
                     <p class="text-2xl tier-gold">Gold</p>
-                    <p class="text-xs text-gray-400">Dedicated solely for **All 11 Volunteers/Coordinators**</p>
+                    <p class="text-xs text-gray-400">Dedicated solely for <span class="emphasis-text">All 11 Volunteers/Coordinators</span></p>
                 </div>
                 <div class="p-3 border rounded border-gray-400/50">
                     <p class="text-2xl tier-silver">Silver</p>
@@ -395,5 +675,104 @@
         </section>
 
     </div>
+
+    <script>
+        // Navigation functionality
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const barsIcon = mobileMenuBtn.querySelector('.fa-bars');
+            const timesIcon = mobileMenuBtn.querySelector('.fa-times');
+            
+            if (navLinks.classList.contains('active')) {
+                barsIcon.style.display = 'none';
+                timesIcon.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            } else {
+                barsIcon.style.display = 'block';
+                timesIcon.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                
+                const barsIcon = mobileMenuBtn.querySelector('.fa-bars');
+                const timesIcon = mobileMenuBtn.querySelector('.fa-times');
+                
+                barsIcon.style.display = 'block';
+                timesIcon.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                
+                const barsIcon = mobileMenuBtn.querySelector('.fa-bars');
+                const timesIcon = mobileMenuBtn.querySelector('.fa-times');
+                
+                barsIcon.style.display = 'block';
+                timesIcon.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 100; // Account for navbar height
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation delays to table rows for better loading effect
+        window.addEventListener('load', () => {
+            const tableRows = document.querySelectorAll('.run-of-show tbody tr');
+            tableRows.forEach((row, index) => {
+                row.style.animationDelay = `${index * 0.05}s`;
+                row.style.animation = 'fadeInUp 0.5s ease forwards';
+            });
+        });
+    </script>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </body>
 </html>
