@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEEF Host Dashboard</title>
-    <!-- Load Tailwind CSS for utility classes and responsiveness -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Font Awesome for required icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght={400;700}&display=swap" rel="stylesheet">
     <style>
@@ -59,6 +57,31 @@
             border-radius: 0.75rem;
             padding: 1.5rem;
         }
+
+        /* New Styles for Personnel Cards */
+        .person-card {
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: default;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(255, 71, 166, 0.4);
+        }
+        .person-card .role {
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            font-weight: 500;
+            margin-top: 0.1rem;
+        }
+
 
         /* Gift Tier Colors (5 Tiers UPDATED) */
         .tier-platinum { color: var(--neon-platinum); font-weight: bold; text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
@@ -393,7 +416,6 @@
 </head>
 <body>
     
-    <!-- Enhanced Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#dashboard" class="nav-logo">CEEF Host Dashboard</a>
@@ -404,7 +426,7 @@
                 <li><a href="#games">Games</a></li>
                 <li><a href="#rampwalk">Ramp Walk</a></li>
                 <li><a href="#prizes">Prizes</a></li>
-                <li><a href="templateNew.html">Return Home</a></li>
+                <li><a href="#personnel">Personnel</a></li> <li><a href="./index.html">Return Home</a></li>
             </ul>
             
             <button class="mobile-menu-btn" id="mobile-menu-btn">
@@ -416,7 +438,6 @@
 
     <div class="container mx-auto p-4 md:p-8" id="dashboard">
         
-        <!-- HEADER -->
         <header class="text-center mb-12">
             <h1 class="header-title text-5xl md:text-6xl font-bold mb-2 text-white">
                 <i class="fas fa-screwdriver-wrench text-pink-400 mr-4"></i> CEEF Host Control Panel
@@ -424,7 +445,6 @@
             <p class="text-cyan-400 text-xl">Detailed Run of Show & Coordinator Action Plan (Final Sequence)</p>
         </header>
 
-        <!-- DASHBOARD SUMMARY CARDS -->
         <section class="grid md:grid-cols-3 gap-8 mb-16">
             <div class="card p-6 rounded-xl text-center">
                 <i class="fas fa-clock text-4xl text-cyan-400 mb-2"></i>
@@ -435,8 +455,7 @@
             <div class="card p-6 rounded-xl text-center">
                 <i class="fas fa-route text-4xl text-cyan-400 mb-2"></i>
                 <h2 class="text-xl font-bold text-white">Total Prizes Tracked</h2>
-                <!-- TOTAL PRIZE COUNT: 33 (2 Platinum + 6 Diamond + 8 Coral + 11 Gold + 6 Silver) -->
-                <p class="text-3xl font-extrabold text-pink-400 mt-2">33 Winners</p>
+                <p class="text-3xl font-extrabold text-pink-400 mt-2">32 Winners</p>
                 <p class="text-sm text-gray-400 mt-1">Includes all five tiers: P, D, C, G, & S.</p>
             </div>
             <div class="card p-6 rounded-xl text-center">
@@ -447,7 +466,6 @@
             </div>
         </section>
 
-        <!-- SECTION 1: DETAILED RUN OF SHOW (ROS) -->
         <section class="mb-16" id="schedule">
             <h3 class="section-title"><i class="fas fa-list-ol mr-2"></i> Detailed Run of Show (ROS) - Sequence Confirmed</h3>
             <div class="overflow-x-auto rounded-lg shadow-2xl">
@@ -464,31 +482,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- PRE-EVENT & WELCOME -->
                         <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">6:00 PM</td><td data-label="Duration">30 min</td><td data-label="Activity/Segment">Setup & Final Check</td><td data-label="Performer/Host">All Coordinators</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">AV: Test 3 mics and 2 music inputs. PROPS: Stage all game materials backstage. LIGHTS: Set Welcome/Ambient lighting scene.</td></tr>
                         <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">6:30 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">Guests Arrive / Mingle</td><td data-label="Performer/Host">Host: Ritika & Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: 'CEEF Warmup Mix'. Coordinators manage check-in and guide guests to seating/mingle areas.</td></tr>
                         <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">6:45 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Welcome & Intro</td><td data-label="Performer/Host">Host: Ritika & Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">Official welcome and quick thank you to initial guests.</td></tr>
                         
-                        <!-- PERFORMANCES (Diamond Tier for all Performers) -->
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">6:55 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 1: Solo Dance</td><td data-label="Performer/Host">Vishwanath Mane</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Custom EDM Track 'Glow Up'. LIGHTING: Strobes/High-Energy. (Performer Gift)</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:05 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 2: Solo Dance</td><td data-label="Performer/Host">Suraj Mane</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: High-tempo Bollywood. LIGHTING: Red/Gold wash. (Performer Gift)</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:15 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 3: Solo Dance</td><td data-label="Performer/Host">Anuja Pansare</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Contemporary Pop. LIGHTING: Soft Pink/Cyan hues. (Performer Gift)</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:25 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 4: Vocal Act</td><td data-label="Performer/Host">Ritesh Rokade</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MIC: Guitar and Vocal mic check. MUSIC: Acoustic Track. (Performer Gift)</td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">6:55 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 1: Solo Dance</td><td data-label="Performer/Host">Anuja Pansare</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Contemporary Pop. LIGHTING: Soft Pink/Cyan hues. (Performer Gift)</td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:05 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 2: Vocal Duet</td><td data-label="Performer/Host">Aachal Dixit/Kapil Hedau</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Acoustic/Pop Duet. LIGHTING: Warm White wash. (Performer Gift)</td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:15 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment">Performance 3: Vocal Act</td><td data-label="Performer/Host">Ritesh Rokade</td><td data-label="Gifts/Prizes">1</td><td data-label="Gift Tier"><span class="tier-diamond">Diamond</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MIC: Guitar and Vocal mic check. MUSIC: Acoustic Track. (Performer Gift)</td></tr>
                         
-                        <!-- ICEBREAKERS & GAME START -->
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">7:25 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment"><span class="highlight-text">Host Mingle / Audience Quick Break</span></td><td data-label="Performer/Host">Host: Ritika & Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">MUSIC: Background track from 'CEEF Warmup Mix'. Hosts encourage movement before main games. MAINTAIN timing for 7:35 PM Icebreaker.</td></tr>
+
                         <tr class="hover:bg-gray-700/50 bg-indigo-900/40"><td data-label="Time" class="time-col">7:35 PM</td><td data-label="Duration">10 min</td><td data-label="Activity/Segment"><span class="highlight-text">Icebreakers / Warm-up Activity</span></td><td data-label="Performer/Host">Host: Ritika & Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="activity-new">New:</span> Fast-paced "Guess the Movie, Song, Tagline of Brand." Keep audience involved and energized. Handheld mics back with Hosts.</td></tr>
 
-                        <!-- GAMES BLOCK (7:45 PM - 8:50 PM) -->
                         <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">7:45 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 1: Chinese Whispers Dance</span></td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">SETUP: 3 teams, sealed cards, whiteboard. <span class="emphasis-text">No winners (as per new plan).</span> Link: <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Whispers Demo</a></td></tr>
                         <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:00 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="highlight-text">Intermission 1: Scavenger Hunt</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">2 Questions / 2 Winners.</span> Ask audience to bring random, common objects quickly.</td></tr>
                         <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:05 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 2: Head, Shoulder, Toe Challenge</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">3 Rounds / 3 Winners.</span> One-on-one knockout style. Prizes are now <span class="tier-coral">Coral</span> Tier. Link: <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Head/Toe Demo</a></td></tr>
                         <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:20 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="highlight-text">Intermission 2: Scavenger Hunt</span></td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">2 Questions / 2 Winners.</span> Keep segment fast to maintain game momentum.</td></tr>
-                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:25 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 3: The Balloon Race</span> <span class="activity-new">(NEW)</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">3 Rounds / 3 Winners.</span> Prizes are now <span class="tier-coral">Coral</span> Tier. Coordinator must have inflated balloons ready.</td></tr>
+                        <tr class="hover:bg-gray-700/50 bg-green-900/40"><td data-label="Time" class="time-col">8:25 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment"><span class="game-title">GAME 3: Balloon Savior</span> <span class="activity-new"></span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">3</td><td data-label="Gift Tier"><span class="tier-coral">Coral</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">3 Rounds / 3 Winners.</span> Prizes are now <span class="tier-coral">Coral</span> Tier. Coordinator must have inflated balloons/strings ready for all players. <span class="coordinator-note">Focus on safety!</span></td></tr>
                         <tr class="hover:bg-gray-700/50 bg-yellow-900/40"><td data-label="Time" class="time-col">8:40 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="highlight-text">Intermission 3: Scavenger Hunt</span></td><td data-label="Performer/Host">Host: Shivani</td><td data-label="Gifts/Prizes">2</td><td data-label="Gift Tier"><span class="tier-silver">Silver</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">2 Questions / 2 Winners.</span> Final chance for audience participation.</td></tr>
 
-                        <!-- CLOSING SEQUENCE (Ramp Walk > Awards > Closing) -->
                         <tr class="hover:bg-gray-700/50 bg-purple-900/40"><td data-label="Time" class="time-col">8:45 PM</td><td data-label="Duration">20 min</td><td data-label="Activity/Segment"><span class="highlight-text">Activity: CEEF Ramp Walk</span></td><td data-label="Performer/Host">Host: Ritika</td><td data-label="Gifts/Prizes">6</td><td data-label="Gift Tier"><span class="tier-platinum">P</span>/<span class="tier-coral">C</span>/<span class="tier-diamond">D</span></td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="prize-count">6 Winners:</span> (2 Platinum, 2 Coral, 2 Diamond) See details below for award names. Music: 'Runway Mix'.</td></tr>
-                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:05 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">Awards Ceremony</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes"><span class="prize-count">33</span></td><td data-label="Gift Tier">All Tiers</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">Presenting all awards. Coordinator C pre-stages awards by tier. <span class="coordinator-note">(11 Gold Tiers for Volunteers)</span></td></tr>
+                        <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:05 PM</td><td data-label="Duration">15 min</td><td data-label="Activity/Segment">Awards Ceremony</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes"><span class="prize-count">32</span></td><td data-label="Gift Tier">All Tiers</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col">Presenting all awards. Coordinator C pre-stages awards by tier. <span class="coordinator-note">(11 Gold Tiers for Volunteers)</span></td></tr>
                         <tr class="hover:bg-gray-700/50"><td data-label="Time" class="time-col">9:20 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment">Closing Speech & Thank You</td><td data-label="Performer/Host">Hosts & Leadership</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="coordinator-note">Crucial:</span> Specific shout-out thanking all <span class="emphasis-text">Coordinators/Volunteers (Gold Tier)</span>. Announce dinner. MUSIC: Transition to 'Party Mix'.</td></tr>
                         <tr class="hover:bg-gray-700/50 bg-emerald-900/40"><td data-label="Time" class="time-col">9:25 PM</td><td data-label="Duration">5 min</td><td data-label="Activity/Segment"><span class="coordinator-note">Coordinator Cleanup & Transition</span></td><td data-label="Performer/Host">All Coordinators</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="coordinator-note">COORDINATOR TEAMS:</span> Monitor food stations and overall flow. Begin soft cleanup of stage props.</td></tr>
                         <tr class="hover:bg-gray-700/50 bg-amber-900/40"><td data-label="Time" class="time-col">9:30 PM</td><td data-label="Duration">60+ min</td><td data-label="Activity/Segment"><span class="emphasis-text" style="font-size: 1.3em; color: #ffd700;">Now We Enjoy Dinner!</span></td><td data-label="Performer/Host">Everyone</td><td data-label="Gifts/Prizes">0</td><td data-label="Gift Tier">-</td><td data-label="Detailed Coordinator Action / Tech Notes" class="note-col"><span class="emphasis-text">Team celebration time!</span> Dinner service begins. Background music continues. All team members can now relax and enjoy the evening together.</td></tr>
@@ -497,12 +511,10 @@
             </div>
         </section>
 
-        <!-- SECTION 2: GAME MASTER HANDBOOK -->
         <section class="mb-16" id="games">
             <h3 class="section-title"><i class="fas fa-puzzle-piece mr-2"></i> Game Master Handbook (Rules & Execution)</h3>
             <div class="space-y-6">
 
-                <!-- Game 1: Chinese Whispers with Dance (FIRST GAME) -->
                 <div class="card">
                     <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 1: Chinese Whispers with Dance (7:45 PM)</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution Refined:</p>
@@ -510,11 +522,10 @@
                         <li><span class="emphasis-text">Teams & Setup:</span> 3 teams, 8-10 players each, lined up facing away from the stage.</li>
                         <li><span class="emphasis-text">Action:</span> Host Shivani shows the sealed dance card to the <span class="highlight-text">last</span> person, who must perform the move <span class="highlight-text">non-verbally</span> to the person in front.</li>
                         <li><span class="emphasis-text">Winner Status:</span> No official winners for this game. Focus on team cooperation and fun!</li>
-                        <li><span class="emphasis-text">Demo Link:</span> <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Video Demo</a></li>
+                        <li><span class="emphasis-text">Demo Link:</span> <a href="https://www.youtube.com/shorts/5aGzzmE2ynw" target="_blank" class="text-cyan-400 underline">Whispers Demo</a></li>
                     </ul>
                 </div>
 
-                <!-- Intermission 1: Scavenger Hunt (2 Winners) -->
                 <div class="card bg-yellow-900/30">
                     <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 1 (8:00 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution:</p>
@@ -524,7 +535,6 @@
                     </ul>
                 </div>
 
-                <!-- Game 2: Head, Shoulder, Toe Challenge (SECOND GAME) -->
                 <div class="card">
                     <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 2: Head, Shoulder, Toe Challenge (8:05 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution Refined:</p>
@@ -532,11 +542,10 @@
                         <li><span class="emphasis-text">Setup:</span> Pairs of contestants. Place one water bottle between them.</li>
                         <li><span class="emphasis-text">Action:</span> Host calls out body parts. Grab the <span class="highlight-text">"BOTTLE"</span> when called.</li>
                         <li><span class="emphasis-text">Winners:</span> <span class="emphasis-text">3 Rounds / 3 Winners</span> of <span class="tier-coral">Coral</span> Tier prizes.</li>
-                        <li><span class="emphasis-text">Demo Link:</span> <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Video Demo</a></li>
+                        <li><span class="emphasis-text">Demo Link:</span> <a href="https://youtu.be/CK_sWXbRS8Y" target="_blank" class="text-cyan-400 underline">Head/Toe Demo</a></li>
                     </ul>
                 </div>
                 
-                <!-- Intermission 2: Scavenger Hunt (2 Winners) -->
                 <div class="card bg-yellow-900/30">
                     <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 2 (8:20 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution:</p>
@@ -546,18 +555,17 @@
                     </ul>
                 </div>
 
-                <!-- Game 3: The Balloon Race (THIRD GAME - NEW) -->
                 <div class="card">
-                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 3: The Balloon Race (8:25 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
+                    <h4 class="text-2xl font-bold text-pink-400 mb-2">GAME 3: Balloon Savior (8:25 PM) - 3 x <span class="tier-coral">Coral</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution Refined:</p>
                     <ul class="list-disc list-inside text-sm text-gray-300 space-y-2 pl-4">
-                        <li><span class="emphasis-text">Setup:</span> 3 race lanes. 5 racers per race. Hold a balloon between feet.</li>
-                        <li><span class="emphasis-text">Action:</span> Race to the point and back without dropping/touching the balloon with hands.</li>
+                        <li><span class="emphasis-text">Setup:</span> Single game area. All contestants tie an inflated balloon to one ankle with a short string.</li>
+                        <li><span class="emphasis-text">Action:</span> Contestants must try to burst other players’ balloons while protecting their own. Hands are not allowed.</li>
                         <li><span class="emphasis-text">Winners:</span> <span class="emphasis-text">3 Rounds / 3 Winners</span> of <span class="tier-coral">Coral</span> Tier prizes.</li>
+                        <li><span class="emphasis-text">Safety Note:</span> Ensure adequate playing space and remind contestants about the no-hands rule and general safety.</li>
                     </ul>
                 </div>
 
-                <!-- Intermission 3: Scavenger Hunt (2 Winners) -->
                 <div class="card bg-yellow-900/30">
                     <h4 class="text-xl font-bold text-yellow-400 mb-2">INTERMISSION: Scavenger Hunt 3 (8:40 PM) - 2 x <span class="tier-silver">Silver</span> Prizes</h4>
                     <p class="font-bold text-cyan-400 mb-2">Execution:</p>
@@ -570,32 +578,27 @@
             </div>
         </section>
 
-        <!-- SECTION 3: ACTIVITY INSTRUCTIONS (Ramp Walk) (Updated for P/C/D) -->
         <section class="mb-16" id="rampwalk">
             <h3 class="section-title"><i class="fas fa-crown mr-2"></i> Grand Finale: CEEF Ramp Walk Awards (6 Winners)</h3>
             <div class="space-y-6">
                 
-                <!-- Ramp Walk Awards (CLOSING SEGMENT) -->
                 <div class="card bg-purple-900/40">
                     <h4 class="text-xl font-bold text-cyan-400 mb-4">CEEF Ramp Walk (8:45 PM - Before Awards)</h4>
                     <p class="font-bold text-pink-400 mb-2 text-lg">6 Winners Breakdown & Award Names:</p>
                     <div class="grid md:grid-cols-3 gap-4">
                         
-                        <!-- Platinum Tier (Ramp Top) -->
                         <div class="p-3 bg-gray-900 rounded border border-white/50">
                             <p class="text-lg font-extrabold tier-platinum">1. The Zenith Diva (Style Queen) - <span class="tier-platinum">Platinum</span></p>
                             <p class="text-lg font-extrabold tier-platinum">2. The Zenith Duke (Style King) - <span class="tier-platinum">Platinum</span></p>
                             <p class="text-xs text-gray-400 mt-1">Awarded to the overall most stylish, confident, and slaying individual (1 F, 1 M). (2 Prizes Total)</p>
                         </div>
                         
-                        <!-- Coral Tier (Best Walk) -->
                         <div class="p-3 bg-gray-900 rounded border border-red-400/50">
                             <p class="text-lg font-extrabold tier-coral">3. The Runway Virtuosa (Best Walk F) - <span class="tier-coral">Coral</span></p>
                             <p class="text-lg font-extrabold tier-coral">4. The Runway Maestro (Best Walk M) - <span class="tier-coral">Coral</span></p>
                             <p class="text-xs text-gray-400 mt-1">Awarded for the most confident, fluid, and captivating ramp performance (1 F, 1 M). (2 Prizes Total)</p>
                         </div>
                         
-                        <!-- Diamond Tier (Best Attire) -->
                         <div class="p-3 bg-gray-900 rounded border border-blue-400/50">
                             <p class="text-lg font-extrabold tier-diamond">5. The Crest Fashionista (Best Attire F) - <span class="tier-diamond">Diamond</span></p>
                             <p class="text-lg font-extrabold tier-diamond">6. The Crest Dapper (Best Attire M) - <span class="tier-diamond">Diamond</span></p>
@@ -607,9 +610,8 @@
             </div>
         </section>
 
-        <!-- SECTION 4: FINAL PRIZE DISTRIBUTION SUMMARY (Updated Counts) -->
         <section class="mb-16" id="prizes">
-            <h3 class="section-title"><i class="fas fa-hand-holding-heart mr-2"></i> Final Prize Distribution Summary (Total: 33)</h3>
+            <h3 class="section-title"><i class="fas fa-hand-holding-heart mr-2"></i> Final Prize Distribution Summary (Total: 32)</h3>
             <div class="card p-6">
                 <div class="grid md:grid-cols-5 gap-6 text-center">
                     
@@ -620,9 +622,9 @@
                     </div>
 
                     <div class="border-b-4 border-blue-400/80 pb-2">
-                        <p class="text-4xl tier-diamond font-extrabold">6</p>
+                        <p class="text-4xl tier-diamond font-extrabold">5</p>
                         <p class="text-lg text-blue-300 mt-1 font-semibold">Diamond Tiers</p>
-                        <p class="text-xs text-gray-400">(2 Ramp Attire + 4 Performers)</p>
+                        <p class="text-xs text-gray-400">(2 Ramp Attire + 3 Performers)</p>
                     </div>
 
                     <div class="border-b-4 border-red-400/80 pb-2">
@@ -643,11 +645,10 @@
                         <p class="text-xs text-gray-400">(3 Hunts x 2 Winners each)</p>
                     </div>
                 </div>
-                <p class="text-center text-sm text-pink-400 mt-6 font-bold">Total Gifts to be prepared and tracked: 33</p>
+                <p class="text-center text-sm text-pink-400 mt-6 font-bold">Total Gifts to be prepared and tracked: 32</p>
             </div>
         </section>
 
-        <!-- SECTION 5: GIFT TIER DEFINITION (Moved to End) -->
         <section class="mb-16">
             <h3 class="section-title"><i class="fas fa-gem mr-2"></i> CEEF Gift Tier Hierarchy</h3>
             <div class="card p-6 grid md:grid-cols-5 gap-4 text-center">
@@ -670,6 +671,130 @@
                 <div class="p-3 border rounded border-gray-400/50">
                     <p class="text-2xl tier-silver">Silver</p>
                     <p class="text-xs text-gray-400">Quick audience participation winners (Scavenger Hunts)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-16" id="personnel">
+            <h3 class="section-title"><i class="fas fa-users mr-2"></i> CEEF Event Personnel Roster</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+
+                <div class="card p-6 md:col-span-full">
+                    <h4 class="text-xl font-bold text-cyan-400 mb-6 text-center border-b border-cyan-400/30 pb-3"><i class="fas fa-user-shield mr-2"></i> Core Team Leadership (8 Members)</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 text-center">
+                        <div class="person-card">
+                            <img src="./images/Vidyasagar Mundada.jpg" alt="Photo of Vidyasagar Mundada" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=VM';">
+                            <p class="font-bold text-sm">Vidyasagar Mundada</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Digamber Ranjane.jpg" alt="Photo of Digamber Ranjane" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=DR';">
+                            <p class="font-bold text-sm">Digamber Ranjane</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Naveen Pal.jpg" alt="Photo of Naveen Pal" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=NP';">
+                            <p class="font-bold text-sm">Naveen Pal</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Kishalaya Bhattacharjee.jpg" alt="Photo of Kishalaya Bhattacharjee" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=KB';">
+                            <p class="font-bold text-sm">Kishalaya Bhattacharjee</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Gayatri Patil.jpg" alt="Photo of Gayatri Patil" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=GP';">
+                            <p class="font-bold text-sm">Gayatri Patil</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Neeta Bhujbal.jpg" alt="Photo of Neeta Bhujbal" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=NB';">
+                            <p class="font-bold text-sm">Neeta Bhujbal</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Sayali Jadhav.jpg" alt="Photo of Sayali Jadhav" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=SJ';">
+                            <p class="font-bold text-sm">Sayali Jadhav</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Kunal Pawar.jpg" alt="Photo of Kunal Pawar" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-cyan-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/14f7ff/0d011f?text=KP';">
+                            <p class="font-bold text-sm">Kunal Pawar</p>
+                            <p class="role">Core Team</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card p-6 md:col-span-1">
+                    <h4 class="text-xl font-bold text-neon-pink mb-6 text-center border-b border-pink-500/30 pb-3"><i class="fas fa-microphone-alt mr-2"></i> Event Hosts (2 Members)</h4>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="person-card">
+                            <img src="./images/Ritika Tiwari.jpg" alt="Photo of Ritika Tiwari" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-pink-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ff47a6/0d011f?text=RT';">
+                            <p class="font-bold text-sm">Ritika Tiwari</p>
+                            <p class="role">Event Host</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Shivani Mhaisekar.jpg" alt="Photo of Shivani Mhaisekar" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-pink-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ff47a6/0d011f?text=SM';">
+                            <p class="font-bold text-sm">Shivani Mhaisekar</p>
+                            <p class="role">Event Host</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6 md:col-span-2">
+                    <h4 class="text-xl font-bold text-yellow-400 mb-6 text-center border-b border-yellow-400/30 pb-3"><i class="fas fa-handshake mr-2"></i> Event Coordinators (10 Members)</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 text-center">
+                        <div class="person-card">
+                            <img src="./images/Nitesh Khandelwal.jpg" alt="Photo of Nitesh Khandelwal" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=NK';">
+                            <p class="font-bold text-sm">Nitesh Khandelwal</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Aniket Shivane.jpg" alt="Photo of Aniket Shivane" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=AS';">
+                            <p class="font-bold text-sm">Aniket Shivane</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Harshada Kadam.jpg" alt="Photo of Harshada Kadam" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=HK';">
+                            <p class="font-bold text-sm">Harshada Kadam</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Rishabh Das.jpg" alt="Photo of Rishabh Das" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=RD';">
+                            <p class="font-bold text-sm">Rishabh Das</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Ram Dhanure.jpg" alt="Photo of Ram Dhanure" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=RD';">
+                            <p class="font-bold text-sm">Ram Dhanure</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Samarth Gayakhe.jpg" alt="Photo of Samarth Gayakhe" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=SG';">
+                            <p class="font-bold text-sm">Samarth Gayakhe</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Vaibhav Kekan.jpg" alt="Photo of Vaibhav Kekan" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=VK';">
+                            <p class="font-bold text-sm">Vaibhav Kekan</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Minank Zanwar.jpg" alt="Photo of Minank Zanwar" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=MZ';">
+                            <p class="font-bold text-sm">Minank Zanwar</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Prajwal Prince.jpg" alt="Photo of Prajwal Prince" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=PP';">
+                            <p class="font-bold text-sm">Prajwal Prince</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                        <div class="person-card">
+                            <img src="./images/Akhil Patel.jpg" alt="Photo of Akhil Patel" class="profile-img w-20 h-20 mx-auto rounded-full object-cover ring-2 ring-yellow-500 mb-2" onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd700/0d011f?text=AP';">
+                            <p class="font-bold text-sm">Akhil Patel</p>
+                            <p class="role">Coordinator</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
